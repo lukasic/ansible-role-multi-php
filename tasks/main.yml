@@ -1,0 +1,71 @@
+---
+- name: Install dependecies
+  apt:
+    pkg:
+      - apt-transport-https
+      - lsb-release
+      - ca-certificates
+
+- name: Add packages.sury.org/php APT key
+  apt_key:
+    url: https://packages.sury.org/php/apt.gpg
+    state: present
+
+- name: Add packages.sury.org/php APT repository
+  apt_repository:
+    repo: deb https://packages.sury.org/php/ {{ ansible_distribution_release }} main
+    state: present
+    mode: 0644
+    filename: php.list
+
+- name: Install common php extensions
+  apt:
+    pkg: "{{ item }}"
+  loop: "{{ php_common }}"
+
+- name: Install php versions
+  apt:
+    pkg: "{{ lookup('vars', item.version) | union(php_versions[item.version].default_modules | union(item.get('modules_extra', [])) | map('regex_replace', '^(.*)$', 'php' + php_versions[item.version].version + '-\\1') | list ) }}"
+    state: latest
+  loop: "{{ php }}"
+
+- name: Remove unused php versions
+  apt:
+    pkg: "{{ lookup('vars', item) }}"
+    state: absent
+  loop: "{{ php_versions.keys() | difference(php | map(attribute='version') | list) }}"
+
+- name: Remove unused php packages
+  apt:
+    pkg: "{{ php_versions[item.version].all_modules | difference(php_versions[item.version].default_modules) | difference(item.get('modules_extra', [])) | map('regex_replace', '^(.*)$', 'php' + php_versions[item.version].version + '-\\1') | list  }}"
+    state: absent
+  loop: "{{ php }}"
+
+- name: Configure fpm/php.ini
+  ini_file:
+    path: "{{ php_versions[item.0.version].conf_dir }}/fpm/php.ini"
+    section: "{{ item.1.section }}"
+    option: "{{ item.1.key }}"
+    value: "{{ item.1.value }}"
+  loop: "{{query('subelements', php, 'fpm_ini', {'skip_missing': True})}}"
+
+- name: Configure cli/php.ini
+  ini_file:
+    path: "{{ php_versions[item.0.version].conf_dir }}/cli/php.ini"
+    section: "{{ item.1.section }}"
+    option: "{{ item.1.key }}"
+    value: "{{ item.1.value }}"
+  loop: "{{query('subelements', php, 'cli_ini', {'skip_missing': True})}}"
+
+- name: Set default PHP version
+  alternatives:
+    name: "{{ item.name }}"
+    path: "{{ item.path }}"
+  loop:
+    - { "name": "php", "path": "/usr/bin/php7.3" }
+    - { "name": "php-cgi", "path": "/usr/bin/php-cgi7.3" }
+    - { "name": "php-cgi-bin", "path": "/usr/lib/cgi-bin/php7.3" }
+#    - { "name": "php-config", "path": "/usr/bin/php-config7.3" }
+#    - { "name": "phpdbg", "path": "/usr/bin/phpdbg7.3" }
+#    - { "name": "phpize", "path": "/usr/bin/phpize7.3" }
+

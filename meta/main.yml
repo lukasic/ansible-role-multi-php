@@ -1,0 +1,26 @@
+galaxy_info:
+  author: lukasic
+  description: Debian multi-php role
+  company:
+
+  # If the issue tracker for your role is not on github, uncomment the
+  # next line and provide a value
+  # issue_tracker_url: http://example.com/issue/tracker
+
+  license: WTFPL
+
+  min_ansible_version: 2.8
+
+  platforms:
+    - name: Debian
+      versions:
+        - buster
+
+  galaxy_tags:
+    - web
+    - php
+    - sury
+    - multi-php
+
+dependencies: []
+  

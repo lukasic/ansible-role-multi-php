@@ -1,0 +1,143 @@
+---
+
+php_default: php73
+
+php_common:
+ - php-redis
+ - php-imagick
+
+php56:
+ - 'php5.6'
+ - 'php5.6-cgi'
+ - 'php5.6-cli'
+ - 'php5.6-common'
+ - 'php5.6-fpm'
+
+php70:
+ - 'php7.0'
+ - 'php7.0-cgi'
+ - 'php7.0-cli'
+ - 'php7.0-common'
+ - 'php7.0-fpm'
+
+php71:
+ - 'php7.1'
+ - 'php7.1-cgi'
+ - 'php7.1-cli'
+ - 'php7.1-common'
+ - 'php7.1-fpm'
+
+php72:
+ - 'php7.2'
+ - 'php7.2-cgi'
+ - 'php7.2-cli'
+ - 'php7.2-common'
+ - 'php7.2-fpm'
+
+php73:
+ - 'php7.3'
+ - 'php7.3-cgi'
+ - 'php7.3-cli'
+ - 'php7.3-common'
+ - 'php7.3-fpm'
+
+php74:
+ - 'php7.4'
+ - 'php7.4-cgi'
+ - 'php7.4-cli'
+ - 'php7.4-common'
+ - 'php7.4-fpm'
+
+php_default_modules:
+ - bcmath
+ - bz2
+ - curl
+ - gd
+ - readline
+ - json
+ - mysql
+ - soap
+ - opcache
+ - xml
+ - xmlrpc
+ - zip
+
+php_all_modules:
+ - bcmath
+ - bz2
+ - curl
+ - dba
+ - enchant
+ - gd
+ - gmp
+ - imap
+ - interbase
+ - intl
+ - json
+ - ldap
+ - mbstring
+ - mcrypt
+ - mysql
+ - odbc
+ - opcache
+ - pgsql
+ - pspell
+ - readline
+ - recode
+ - snmp
+ - soap
+ - sqlite3
+ - sybase
+ - tidy
+ - xsl
+ - xml
+ - xmlrpc
+ - zip
+
+php56_default_modules: "{{ php_default_modules }}"
+php70_default_modules: "{{ php_default_modules }}"
+php71_default_modules: "{{ php_default_modules }}"
+php72_default_modules: "{{ php_default_modules }}"
+php73_default_modules: "{{ php_default_modules }}"
+php74_default_modules: "{{ php_default_modules }}"
+
+php56_all_modules: "{{ php_all_modules }}"
+php70_all_modules: "{{ php_all_modules }}"
+php71_all_modules: "{{ php_all_modules }}"
+php72_all_modules: "{{ php_all_modules }}"
+php73_all_modules: "{{ php_all_modules }}"
+php74_all_modules: "{{ php_all_modules | difference(['recode']) }}"
+
+php_versions:
+  php56:
+    version: "5.6"
+    conf_dir: "/etc/php/5.6/"
+    default_modules: "{{ php56_default_modules }}"
+    all_modules: "{{ php56_all_modules }}"
+  php70:
+    version: "7.0"
+    conf_dir: "/etc/php/7.0/"
+    default_modules: "{{ php70_default_modules }}"
+    all_modules: "{{ php70_all_modules }}"
+  php71:
+    version: "7.1"
+    conf_dir: "/etc/php/7.1/"
+    default_modules: "{{ php71_default_modules }}"
+    all_modules: "{{ php71_all_modules }}"
+  php72:
+    version: "7.2"
+    conf_dir: "/etc/php/7.2/"
+    default_modules: "{{ php72_default_modules }}"
+    all_modules: "{{ php72_all_modules }}"
+  php73:
+    version: "7.3"
+    conf_dir: "/etc/php/7.3/"
+    default_modules: "{{ php73_default_modules }}"
+    all_modules: "{{ php73_all_modules }}"
+  php74:
+    version: "7.4"
+    conf_dir: "/etc/php/7.4/"
+    default_modules: "{{ php74_default_modules }}"
+    all_modules: "{{ php74_all_modules }}"
+
+php: []
