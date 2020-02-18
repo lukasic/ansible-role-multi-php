@@ -105,8 +105,8 @@ php56_all_modules: "{{ php_all_modules }}"
 php70_all_modules: "{{ php_all_modules }}"
 php71_all_modules: "{{ php_all_modules }}"
 php72_all_modules: "{{ php_all_modules }}"
-php73_all_modules: "{{ php_all_modules }}"
-php74_all_modules: "{{ php_all_modules | difference(['recode']) }}"
+php73_all_modules: "{{ php_all_modules | difference(['mcrypt']) }}"
+php74_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
 
 php_versions:
   php56:
