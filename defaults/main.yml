@@ -48,6 +48,13 @@ php74:
  - 'php7.4-common'
  - 'php7.4-fpm'
 
+php80:
+ - 'php8.0'
+ - 'php8.0-cgi'
+ - 'php8.0-cli'
+ - 'php8.0-common'
+ - 'php8.0-fpm'
+
 php_default_modules:
  - bcmath
  - bz2
@@ -100,6 +107,7 @@ php71_default_modules: "{{ php_default_modules }}"
 php72_default_modules: "{{ php_default_modules }}"
 php73_default_modules: "{{ php_default_modules }}"
 php74_default_modules: "{{ php_default_modules }}"
+php80_default_modules: "{{ php_default_modules }}"
 
 php56_all_modules: "{{ php_all_modules }}"
 php70_all_modules: "{{ php_all_modules }}"
@@ -107,6 +115,7 @@ php71_all_modules: "{{ php_all_modules }}"
 php72_all_modules: "{{ php_all_modules }}"
 php73_all_modules: "{{ php_all_modules | difference(['mcrypt']) }}"
 php74_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
+php80_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
 
 php_versions:
   php56:
@@ -139,5 +148,10 @@ php_versions:
     conf_dir: "/etc/php/7.4/"
     default_modules: "{{ php74_default_modules }}"
     all_modules: "{{ php74_all_modules }}"
+  php80:
+    version: "8.0"
+    conf_dir: "/etc/php/8.0/"
+    default_modules: "{{ php80_default_modules }}"
+    all_modules: "{{ php80_all_modules }}"
 
 php: []

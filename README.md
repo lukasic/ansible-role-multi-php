@@ -46,6 +46,7 @@ php71_default_modules: "{{ php_default_modules }}"
 php72_default_modules: "{{ php_default_modules }}"
 php73_default_modules: "{{ php_default_modules }}"
 php74_default_modules: "{{ php_default_modules }}"
+php80_default_modules: "{{ php_default_modules }}"
 ```
 
 One special super variable:
@@ -77,7 +78,7 @@ Example 1: Just installs PHP 5.6 and 7.3
       - version: php73
 ```
 
-Example 2: Installs PHP 5.6, 7.3, 7.4 with extra modules and configures global CLI/FPM settings.
+Example 2: Installs PHP 5.6, 7.3, 8.0 with extra modules and configures global CLI/FPM settings.
 
 ```yaml
 - hosts: php
@@ -102,7 +103,7 @@ Example 2: Installs PHP 5.6, 7.3, 7.4 with extra modules and configures global C
      - version: php73
        modules_extra: ['pgsql', 'gd']
        fpm_ini: "{{ common_fpm_ini }}"
-     - version: php74
+     - version: php80
        modules_extra: ['pgsql', 'gd']
        fpm_ini: "{{ common_fpm_ini }}"
 ```
