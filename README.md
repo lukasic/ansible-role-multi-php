@@ -3,8 +3,6 @@ Ansible Role: Multi PHP
 
 Ansible role providing multiple PHP versions on Debian.
 
-**Do not use in production. Role is under development.**
-
 Requirements
 ------------
 
