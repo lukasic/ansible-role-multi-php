@@ -3,6 +3,21 @@ Ansible Role: Multi PHP
 
 Ansible role providing multiple PHP versions on Debian.
 
+Installation
+------------
+
+Using `ansible-galaxy`:
+
+```bash
+$ ansible-galaxy install lukasic.php
+```
+
+Using `requirements.yml`:
+
+```yaml
+- src: lukasic.php
+```
+
 Requirements
 ------------
 
