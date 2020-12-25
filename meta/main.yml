@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: php
   author: lukasic
   description: Debian multi-php role
   company:
@@ -20,7 +21,6 @@ galaxy_info:
     - web
     - php
     - sury
-    - multi-php
 
 dependencies: []
   
