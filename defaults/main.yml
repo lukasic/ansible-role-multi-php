@@ -107,7 +107,7 @@ php71_default_modules: "{{ php_default_modules }}"
 php72_default_modules: "{{ php_default_modules }}"
 php73_default_modules: "{{ php_default_modules }}"
 php74_default_modules: "{{ php_default_modules }}"
-php80_default_modules: "{{ php_default_modules }}"
+php80_default_modules: "{{ php_default_modules | difference('json') }}"
 
 php56_all_modules: "{{ php_all_modules }}"
 php70_all_modules: "{{ php_all_modules }}"
