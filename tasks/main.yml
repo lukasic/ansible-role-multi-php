@@ -5,6 +5,7 @@
       - apt-transport-https
       - lsb-release
       - ca-certificates
+      - gpg
 
 - name: Add packages.sury.org/php APT key
   apt_key:
