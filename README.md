@@ -8,16 +8,16 @@ Changelog
 
 1.1.1
 
-  * Update README
-  * Fix Ansible Lint errors
+* Update README
+*  Fix Ansible Lint errors
 
 1.1.0
 
-  * Support installation on Ubuntu, tested Focal
+* Support installation on Ubuntu, tested Focal
 
 1.0.0
 
-  * Support installation of different PHP versions on Debian Buster
+* Support installation of different PHP versions on Debian Buster
 
 Installation
 ------------
@@ -47,7 +47,7 @@ Role Variables
 Default PHP version:
 
 ```yaml
-php_default: "php73"
+php_default_version: "php7.3"
 ```
 
 List of PHP modules to be installed across all versions:
