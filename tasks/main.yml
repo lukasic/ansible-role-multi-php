@@ -39,7 +39,7 @@
     section: "{{ item.1.section }}"
     option: "{{ item.1.key }}"
     value: "{{ item.1.value }}"
-  loop: "{{query('subelements', php, 'fpm_ini', {'skip_missing': True})}}"
+  loop: "{{ query('subelements', php, 'fpm_ini', {'skip_missing': True}) }}"
 
 - name: Configure cli/php.ini
   ini_file:
@@ -47,7 +47,7 @@
     section: "{{ item.1.section }}"
     option: "{{ item.1.key }}"
     value: "{{ item.1.value }}"
-  loop: "{{query('subelements', php, 'cli_ini', {'skip_missing': True})}}"
+  loop: "{{ query('subelements', php, 'cli_ini', {'skip_missing': True}) }}"
 
 - name: Set default PHP version
   alternatives:
@@ -60,4 +60,3 @@
 #    - { "name": "php-config", "path": "/usr/bin/php-config7.3" }
 #    - { "name": "phpdbg", "path": "/usr/bin/phpdbg7.3" }
 #    - { "name": "phpize", "path": "/usr/bin/phpize7.3" }
-
