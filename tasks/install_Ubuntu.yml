@@ -4,4 +4,3 @@
   ansible.builtin.apt_repository:
     repo: 'ppa:ondrej/php'
     codename: "{{ ansible_distribution_release }}"
-

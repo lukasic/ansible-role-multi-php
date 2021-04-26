@@ -32,9 +32,9 @@ Using `requirements.yml`:
 Requirements
 ------------
 
-Debian Buster distribution, for now.
-
 Role requires APT repository [deb.sury.org](https://deb.sury.org), provided by Ondrej Sury.
+
+Role is tested only on Debian Buster and Ubuntu Focal. Other distribution versions should work too - if they have packages in repository.
 
 Role Variables
 --------------
@@ -92,7 +92,7 @@ None.
 Example Playbook
 ----------------
 
-Example 1: Just installs PHP 5.6 and 7.3
+Example 1: Just install PHP 5.6 and 7.3
 
 ```yaml
 - hosts: php
@@ -104,7 +104,7 @@ Example 1: Just installs PHP 5.6 and 7.3
       - version: php73
 ```
 
-Example 2: Installs PHP 5.6, 7.3, 8.0 with extra modules and configures global CLI/FPM settings.
+Example 2: Install PHP 5.6, 7.3, 8.0 with extra modules and configures global CLI/FPM settings.
 
 ```yaml
 - hosts: php
