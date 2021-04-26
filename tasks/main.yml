@@ -63,9 +63,9 @@
     name: "{{ item.name }}"
     path: "{{ item.path }}"
   loop:
-    - { "name": "php", "path": "/usr/bin/php7.3" }
-    - { "name": "php-cgi", "path": "/usr/bin/php-cgi7.3" }
-    - { "name": "php-cgi-bin", "path": "/usr/lib/cgi-bin/php7.3" }
+    - { "name": "php", "path": "/usr/bin/php{{ php_default_version }}" }
+    - { "name": "php-cgi", "path": "/usr/bin/php-cgi{{ php_default_version }}" }
+    - { "name": "php-cgi-bin", "path": "/usr/lib/cgi-bin/php{{ php_default_version }}" }
 #    - { "name": "php-config", "path": "/usr/bin/php-config7.3" }
 #    - { "name": "phpdbg", "path": "/usr/bin/phpdbg7.3" }
 #    - { "name": "phpize", "path": "/usr/bin/phpize7.3" }
