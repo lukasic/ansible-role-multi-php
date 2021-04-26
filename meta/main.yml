@@ -1,7 +1,7 @@
 galaxy_info:
   role_name: php
   author: lukasic
-  description: Debian multi-php role
+  description: Debian/Ubuntu multi-php role
   company:
 
   # If the issue tracker for your role is not on github, uncomment the
@@ -16,6 +16,9 @@ galaxy_info:
     - name: Debian
       versions:
         - buster
+    - name: Ubuntu
+      versions:
+        - focal
 
   galaxy_tags:
     - web
