@@ -7,17 +7,8 @@
       - ca-certificates
       - gpg
 
-- name: Add packages.sury.org/php APT key
-  apt_key:
-    url: https://packages.sury.org/php/apt.gpg
-    state: present
-
-- name: Add packages.sury.org/php APT repository
-  apt_repository:
-    repo: deb https://packages.sury.org/php/ {{ ansible_distribution_release }} main
-    state: present
-    mode: 0644
-    filename: php.list
+- name: Distribution specific install
+  include_tasks: "install_{{ ansible_distribution }}.yml"
 
 - name: Install common php extensions
   apt:
