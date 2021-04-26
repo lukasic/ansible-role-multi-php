@@ -6,11 +6,16 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
-1.1
+1.1.1
+
+  * Update README
+  * Fix Ansible Lint errors
+
+1.1.0
 
   * Support installation on Ubuntu, tested Focal
 
-1.0
+1.0.0
 
   * Support installation of different PHP versions on Debian Buster
 
