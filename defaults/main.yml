@@ -1,6 +1,6 @@
 ---
 
-php_default_version: php7.3
+php_default_version: "7.3"
 
 php_common:
   - php-redis
