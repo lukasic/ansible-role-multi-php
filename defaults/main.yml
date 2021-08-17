@@ -2,9 +2,7 @@
 
 php_default_version: "7.3"
 
-php_common:
-  - php-redis
-  - php-imagick
+php_common: []
 
 php56:
   - 'php5.6'
@@ -77,6 +75,7 @@ php_all_modules:
   - enchant
   - gd
   - gmp
+  - imagick
   - imap
   - interbase
   - intl
@@ -91,6 +90,7 @@ php_all_modules:
   - pspell
   - readline
   - recode
+  - redis
   - snmp
   - soap
   - sqlite3
