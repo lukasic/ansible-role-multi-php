@@ -6,6 +6,11 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.1.2
+
+* Fix php_default_version
+* Fix extensions redis and imagick
+
 1.1.1
 
 * Update README
