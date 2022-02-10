@@ -2,6 +2,9 @@
 
 php_default_version: "7.3"
 
+php_remove_unused_versions: false
+php_remove_unused_modules: false
+
 php_common: []
 
 php56:
@@ -108,23 +111,23 @@ php_all_modules:
   - xmlrpc
   - zip
 
-php56_default_modules: "{{ php_default_modules }}"
-php70_default_modules: "{{ php_default_modules }}"
-php71_default_modules: "{{ php_default_modules }}"
-php72_default_modules: "{{ php_default_modules }}"
-php73_default_modules: "{{ php_default_modules }}"
-php74_default_modules: "{{ php_default_modules }}"
-php80_default_modules: "{{ php_default_modules | difference('json') }}"
-php81_default_modules: "{{ php_default_modules | difference('json') }}"
+php56_default_modules: "{{ php_default_modules }}"
+php70_default_modules: "{{ php_default_modules }}"
+php71_default_modules: "{{ php_default_modules }}"
+php72_default_modules: "{{ php_default_modules }}"
+php73_default_modules: "{{ php_default_modules }}"
+php74_default_modules: "{{ php_default_modules }}"
+php80_default_modules: "{{ php_default_modules | difference('json') }}"
+php81_default_modules: "{{ php_default_modules | difference('json') }}"
 
-php56_all_modules: "{{ php_all_modules }}"
-php70_all_modules: "{{ php_all_modules }}"
-php71_all_modules: "{{ php_all_modules }}"
-php72_all_modules: "{{ php_all_modules }}"
-php73_all_modules: "{{ php_all_modules | difference(['mcrypt']) }}"
-php74_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
-php80_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
-php81_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
+php56_all_modules: "{{ php_all_modules }}"
+php70_all_modules: "{{ php_all_modules }}"
+php71_all_modules: "{{ php_all_modules }}"
+php72_all_modules: "{{ php_all_modules }}"
+php73_all_modules: "{{ php_all_modules | difference(['mcrypt']) }}"
+php74_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
+php80_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
+php81_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
 
 php_versions:
   php56:

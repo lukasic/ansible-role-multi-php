@@ -25,12 +25,14 @@
   apt:
     pkg: "{{ lookup('vars', item) }}"
     state: absent
+  when: php_remove_unused_versions
   loop: "{{ php_versions.keys() | difference(php | map(attribute='version') | list) }}"
 
-- name: Remove unused php packages
+- name: Remove unused php modules
   apt:
     pkg: "{{ php_versions[item.version].all_modules | difference(php_versions[item.version].default_modules) | difference(item.get('modules_extra', [])) | map('regex_replace', '^(.*)$', 'php' + php_versions[item.version].version + '-\\1') | list  }}"
     state: absent
+  when: php_remove_unused_modules
   loop: "{{ php }}"
 
 - name: Configure fpm/php.ini
