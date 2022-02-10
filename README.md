@@ -6,6 +6,10 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.2.0
+
+* Support PHP 8.1
+
 1.1.2
 
 * Fix php_default_version
@@ -83,6 +87,7 @@ php72_default_modules: "{{ php_default_modules }}"
 php73_default_modules: "{{ php_default_modules }}"
 php74_default_modules: "{{ php_default_modules }}"
 php80_default_modules: "{{ php_default_modules }}"
+php81_default_modules: "{{ php_default_modules }}"
 ```
 
 One special super variable:
