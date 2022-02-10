@@ -18,7 +18,7 @@ Changelog
 1.1.1
 
 * Update README
-*  Fix Ansible Lint errors
+* Fix Ansible Lint errors
 
 1.1.0
 
