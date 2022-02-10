@@ -2,6 +2,9 @@
 
 php_default_version: "7.3"
 
+php_remove_unused_versions: false
+php_remove_unused_modules: false
+
 php_common: []
 
 php56:

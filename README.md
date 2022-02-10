@@ -6,6 +6,16 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.3.0
+
+* Add variable php_remove_unused_modules
+  * Default -> false
+  * If set to true, removes php modules not specified in `php` var
+* Add variable php_remove_unused_versions
+  * Default -> false
+  * If set to true, removes php versions not specified in `php` var
+* Fix: replace <0xa0> characters
+
 1.2.0
 
 * Support PHP 8.1
