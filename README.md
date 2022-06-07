@@ -6,6 +6,10 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.3.1
+
+* Remove json module for PHP 7.4+
+
 1.3.0
 
 * Add variable php_remove_unused_modules

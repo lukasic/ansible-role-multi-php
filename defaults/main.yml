@@ -125,9 +125,9 @@ php70_all_modules: "{{ php_all_modules }}"
 php71_all_modules: "{{ php_all_modules }}"
 php72_all_modules: "{{ php_all_modules }}"
 php73_all_modules: "{{ php_all_modules | difference(['mcrypt']) }}"
-php74_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
-php80_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
-php81_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode']) }}"
+php74_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode', 'json']) }}"
+php80_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode', 'json']) }}"
+php81_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode', 'json']) }}"
 
 php_versions:
   php56:
