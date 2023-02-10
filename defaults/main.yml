@@ -63,6 +63,13 @@ php81:
   - 'php8.1-common'
   - 'php8.1-fpm'
 
+php82:
+  - 'php8.2'
+  - 'php8.2-cgi'
+  - 'php8.2-cli'
+  - 'php8.2-common'
+  - 'php8.2-fpm'
+
 php_default_modules:
   - bcmath
   - bz2
@@ -119,6 +126,7 @@ php73_default_modules: "{{ php_default_modules }}"
 php74_default_modules: "{{ php_default_modules }}"
 php80_default_modules: "{{ php_default_modules | difference('json') }}"
 php81_default_modules: "{{ php_default_modules | difference('json') }}"
+php82_default_modules: "{{ php_default_modules | difference('json') }}"
 
 php56_all_modules: "{{ php_all_modules }}"
 php70_all_modules: "{{ php_all_modules }}"
@@ -128,6 +136,7 @@ php73_all_modules: "{{ php_all_modules | difference(['mcrypt']) }}"
 php74_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode', 'json']) }}"
 php80_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode', 'json']) }}"
 php81_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode', 'json']) }}"
+php82_all_modules: "{{ php_all_modules | difference(['mcrypt', 'recode', 'json']) }}"
 
 php_versions:
   php56:
@@ -170,5 +179,10 @@ php_versions:
     conf_dir: "/etc/php/8.1/"
     default_modules: "{{ php81_default_modules }}"
     all_modules: "{{ php81_all_modules }}"
+  php82:
+    version: "8.2"
+    conf_dir: "/etc/php/8.2/"
+    default_modules: "{{ php82_default_modules }}"
+    all_modules: "{{ php82_all_modules }}"
 
 php: []

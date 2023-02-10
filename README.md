@@ -6,6 +6,10 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.4.0
+
+* Support PHP 8.2
+
 1.3.1
 
 * Remove json module for PHP 7.4+
