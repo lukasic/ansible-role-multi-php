@@ -82,7 +82,7 @@ Role Variables
 Default PHP version:
 
 ```yaml
-php_default_version: "php7.3"
+php_default_version: "7.3"
 ```
 
 List of PHP modules to be installed across all versions:
