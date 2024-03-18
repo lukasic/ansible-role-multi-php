@@ -13,12 +13,14 @@
 - name: Install common php extensions
   apt:
     pkg: "{{ item }}"
+    update_cache: true
   loop: "{{ php_common }}"
 
 - name: Install php versions
   apt:
     pkg: "{{ lookup('vars', item.version) | union(php_versions[item.version].default_modules | union(item.get('modules_extra', [])) | map('regex_replace', '^(.*)$', 'php' + php_versions[item.version].version + '-\\1') | list ) }}"
     state: latest
+    update_cache: true
   loop: "{{ php }}"
 
 - name: Remove unused php versions
