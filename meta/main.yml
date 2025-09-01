@@ -17,9 +17,14 @@ galaxy_info:
     - name: Debian
       versions:
         - buster
+        - bullseye
+        - bookworm
+        - trixie
     - name: Ubuntu
       versions:
         - focal
+        - jammy
+        - noble
 
   galaxy_tags:
     - web

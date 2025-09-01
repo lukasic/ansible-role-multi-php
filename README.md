@@ -6,6 +6,10 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.7.0
+
+* Support Debian 13 and newer (without apt-key)
+
 1.6.0
 
 * Support PHP 8.4
@@ -78,7 +82,9 @@ Requirements
 
 Role requires APT repository [deb.sury.org](https://deb.sury.org), provided by Ondrej Sury.
 
-Role is tested only on Debian Buster and Ubuntu Focal. Other distribution versions should work too - if they have packages in repository.
+Role is tested and used in production deployments of Debian 10/11/12/13, and LTS versions of Ubuntu 20.04/22.04/24.04.
+
+Other distributions based on Debian/Ubuntu should work too.
 
 Role Variables
 --------------
