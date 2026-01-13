@@ -150,7 +150,7 @@ php81_default_modules: "{{ php_default_modules | difference(['json']) }}"
 php82_default_modules: "{{ php_default_modules | difference(['json']) }}"
 php83_default_modules: "{{ php_default_modules | difference(['json']) }}"
 php84_default_modules: "{{ php_default_modules | difference(['json']) }}"
-php85_default_modules: "{{ php_default_modules | difference(['json']) }}"
+php85_default_modules: "{{ php_default_modules | difference(['json', 'opcache']) }}"
 
 
 php56_all_modules: "{{ php_all_modules }}"

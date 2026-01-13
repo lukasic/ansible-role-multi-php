@@ -6,6 +6,11 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.8.1
+
+* Exclude opcache from php85_default_modules
+  * It is not always included, see [changelog / Make OPcache non-optional](https://www.php.net/ChangeLog-8.php#8.5.0)
+
 1.8.0
 
 * Support PHP 8.5
