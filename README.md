@@ -6,6 +6,10 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.8.0
+
+* Support PHP 8.5
+
 1.7.0
 
 * Support Debian 13 and newer (without apt-key)
