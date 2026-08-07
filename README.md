@@ -6,6 +6,10 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.9.1
+
+* fix: lazy resolving of dynamic modules
+
 1.9.0
 
 * Remove phpXY_all_modules, replace them with automatic discovery of all modules. Reasons:
