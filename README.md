@@ -6,6 +6,15 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.9.0
+
+* Remove phpXY_all_modules, replace them with automatic discovery of all modules. Reasons:
+  * In upstream repository modules are added/removed during the life of version.
+  * Module list sometimes differs on different distro versions
+* Support using different apt mirror than official.
+  * Useful if you keep your own mirror with multiple minor versions, or want to specify snapshoted repo containing EOL Ubuntu/Debian version.
+* Added molecule tests.
+
 1.8.1
 
 * Exclude opcache from php85_default_modules
