@@ -4,7 +4,10 @@ name: Molecule
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - fix-actions-*
+      - feat-actions-*
   pull_request:
 
 jobs:
