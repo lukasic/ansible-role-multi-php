@@ -5,8 +5,8 @@ dependency:
   options:
     ignore-certs: false
     ignore-errors: false
-    role-file: ../../requirements.yml
-    requirements-file: ../../requirements.yml
+    role-file: molecule/requirements.yml
+    requirements-file: molecule/requirements.yml
 
 driver:
   name: podman
