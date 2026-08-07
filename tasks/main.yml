@@ -10,6 +10,51 @@
 - name: Distribution specific install
   include_tasks: "install_{{ ansible_distribution }}.yml"
 
+- name: Assert removed variables
+  assert:
+    that:
+      - php56_all_modules is not defined
+      - php70_all_modules is not defined
+      - php71_all_modules is not defined
+      - php72_all_modules is not defined
+      - php73_all_modules is not defined
+      - php74_all_modules is not defined
+      - php80_all_modules is not defined
+      - php81_all_modules is not defined
+      - php82_all_modules is not defined
+      - php83_all_modules is not defined
+      - php84_all_modules is not defined
+      - php85_all_modules is not defined
+    fail_msg: >
+      phpXY_all_modules is replaced with automatic discovery of all possible packages on target platform. They are not used in this role anymore.
+      Please reflect changes in your inventory and remove those variables, or move them to php[version].modules_extra.
+      If you are using this variable(s) for different purpose, you can supress this task by setting php_all_modules_skip_assert: true.
+  when: not (php_all_modules_skip_assert|bool)
+  check_mode: false
+
+- name: Detect php modules for this OS
+  shell: "apt-cache search php{{ php_versions[item].version }} | grep '^php{{ php_versions[item].version }}' | awk '{ print $1 }' | grep -v dbgsym | cut -c 8- | sort | grep -v '^$'"
+  register: _php_modules_raw
+  check_mode: false
+  changed_when: false
+  loop: "{{ php | map(attribute='version') | list }}"
+
+- name: Build facts from loop results
+  facts_from_loop:
+    results: "{{ _php_modules_raw.results }}"
+    name_template: "{item}_all_modules_detected"
+    expr: "result['stdout_lines']"
+  check_mode: false
+
+- name: Check conflicting modules in modules_extra
+  assert:
+    that:
+      - (php_versions[item.version].conflicting_modules | map('intersect', item.modules_extra) | map('length') | select('>', 1) | list | length) == 0
+    fail_msg: "Conflicting modules specified in modules_extra for {{ item.version }}: {{ php_versions[item.version].conflicting_modules | selectattr('0', 'in', item.modules_extra) | selectattr('1', 'in', item.modules_extra) | list }}."
+  when: item.modules_extra is defined
+  loop: "{{ php }}"
+  check_mode: false
+
 - name: Install common php extensions
   apt:
     pkg: "{{ item }}"
