@@ -11,13 +11,12 @@ jobs:
   molecule:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+      - name: Checkout repository
+        run: |
+          git init .
+          git remote add origin https://github.com/${{ github.repository }}.git
+          git fetch --depth 1 origin ${{ github.sha }}
+          git checkout FETCH_HEAD
 
       - name: Install Podman
         run: |
@@ -26,8 +25,8 @@ jobs:
 
       - name: Install Ansible + Molecule
         run: |
-          python -m pip install --upgrade pip
-          pip install ansible-core "molecule" "molecule-plugins[podman]"
+          python3 -m pip install --upgrade pip
+          python3 -m pip install ansible-core "molecule" "molecule-plugins[podman]"
           ansible-galaxy collection install containers.podman
 
       - name: Run molecule scenario matrix-versions
@@ -35,4 +34,3 @@ jobs:
         env:
           ANSIBLE_FORCE_COLOR: "1"
           PY_COLORS: "1"
-
