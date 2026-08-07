@@ -1,0 +1,13 @@
+---
+
+- name: Install debsuryorg-archive-keyring
+  apt:
+    deb: https://packages.sury.org/debsuryorg-archive-keyring.deb
+    state: present
+
+- name: Add packages.sury.org/php APT repository
+  apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ {{ ansible_distribution_release }} main
+    state: present
+    mode: 0644
+    filename: php.list
