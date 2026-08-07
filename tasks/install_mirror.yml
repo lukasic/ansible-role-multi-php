@@ -1,0 +1,13 @@
+---
+
+- name: Get key
+  get_url:
+    url: "{{ php_mirror_key_url }}"
+    dest: "{{ php_mirror_key_dest }}"
+
+- name: Add sury-php mirror apt repository
+  apt_repository:
+    repo: deb [signed-by={{ php_mirror_key_dest }}] {{ php_mirror }} {{ ansible_distribution_release }} main
+    state: present
+    mode: 0644
+    filename: php.list

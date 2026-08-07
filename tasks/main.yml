@@ -9,6 +9,11 @@
 
 - name: Distribution specific install
   include_tasks: "install_{{ ansible_distribution }}.yml"
+  when: php_mirror is not defined
+
+- name: Install mirror
+  include_tasks: "install_mirror.yml"
+  when: php_mirror is defined
 
 - name: Install common php extensions
   apt:
