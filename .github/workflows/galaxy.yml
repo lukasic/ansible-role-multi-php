@@ -1,0 +1,16 @@
+---
+
+name: Galaxy import
+on:
+  push:
+    tags: ['*']
+
+jobs:
+  import:
+    if: github.repository == 'lukasic/ansible-role-multi-php'
+    runs-on: ubuntu-latest
+    steps:
+      - run: pip install ansible
+      - run: ansible-galaxy role import --token "$ANSIBLE_GALAXY_TOKEN" lukasic ansible-role-multi-php
+        env:
+          ANSIBLE_GALAXY_TOKEN: ${{ secrets.GALAXY_TOKEN }}
