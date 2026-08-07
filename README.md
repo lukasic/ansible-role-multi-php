@@ -135,6 +135,14 @@ php80_default_modules: "{{ php_default_modules }}"
 php81_default_modules: "{{ php_default_modules }}"
 ```
 
+You can define following variables for your own mirror:
+
+```yaml
+php_mirror: https://repo.example.org/sury-php-mirror/
+php_mirror_key_url: https://repo.example.org/sury-php-mirror/key.gpg
+php_mirror_key_dest: /usr/share/keyrings/php-repo-mirror.gpg
+```
+
 One special super variable:
 
 ```yaml
@@ -203,5 +211,3 @@ Author Information
 ------------------
 
 The role was created in 2020 by [Lukáš Kasič](https://github.com/lukasic).
-
-

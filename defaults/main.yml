@@ -1,5 +1,9 @@
 ---
 
+#php_mirror: https://repo.example.org/sury-php-mirror/
+#php_mirror_key_url: https://repo.example.org/sury-php-mirror/key.gpg
+#php_mirror_key_dest: /usr/share/keyrings/php-repo-mirror.gpg
+
 php_default_version: "7.3"
 
 php_remove_unused_versions: false
