@@ -57,7 +57,7 @@
           value: "1024M"
 
      - version: php74
-       modules_extra: "{{ php_versions['php74'].all_modules | difference(['yac', 'gmagick']) }}"
+       modules_extra: "{{ php_versions['php74'].all_modules | difference(['yac', 'gmagick', 'phalcon5']) }}"
        fpm_ini: "{{ common_fpm_ini }}"
        cli_ini:
         - section: "PHP"
