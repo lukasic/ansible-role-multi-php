@@ -17,7 +17,6 @@ jobs:
       fail-fast: false
       matrix:
         platform:
-          - ubuntu26
           - debian13
           - ubuntu24
           - debian12
