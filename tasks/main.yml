@@ -8,7 +8,7 @@
       - gpg
 
 - name: Distribution specific install
-  include_tasks: "{{ item }}"
+  include_vars: "{{ item }}"
   with_first_found:
     - "install_{{ ansible_distribution }}_{{ ansible_distribution_release|lower }}.yml"
     - "install_{{ ansible_distribution }}.yml"
