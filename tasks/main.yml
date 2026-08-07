@@ -8,7 +8,10 @@
       - gpg
 
 - name: Distribution specific install
-  include_tasks: "install_{{ ansible_distribution }}.yml"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "install_{{ ansible_distribution }}_{{ ansible_distribution_release|lower }}.yml"
+    - "install_{{ ansible_distribution }}.yml"
   when: php_mirror is not defined
 
 - name: Install mirror
