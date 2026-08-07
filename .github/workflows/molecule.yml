@@ -13,6 +13,16 @@ on:
 jobs:
   molecule:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - ubuntu26
+          - debian13
+          - ubuntu24
+          - debian12
+          - ubuntu22
+          - debian11
     steps:
       - name: Checkout repository
         run: |
@@ -37,3 +47,4 @@ jobs:
         env:
           ANSIBLE_FORCE_COLOR: "1"
           PY_COLORS: "1"
+          MOLECULE_PLATFORM_NAME: ${{ matrix.platform }}
