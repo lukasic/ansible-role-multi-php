@@ -1,0 +1,24 @@
+---
+# Purpose: bring the instance to the desired state by running the role under test.
+# Molecule calls this playbook with `molecule converge`.
+- name: Converge
+  hosts: all
+  gather_facts: true
+  vars:
+    php_default_version: 8.5
+
+    php:
+     - version: php85
+
+  tasks:
+    - name: Install packages
+      apt:
+        pkg:
+          - gpg
+          - apt-utils
+        update_cache: yes
+        state: present
+
+    - name: Apply role under test
+      ansible.builtin.include_role:
+        name: lukasic.php
