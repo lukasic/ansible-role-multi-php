@@ -95,6 +95,13 @@ php85:
   - 'php8.5-common'
   - 'php8.5-fpm'
 
+php86:
+  - 'php8.6'
+  - 'php8.6-cgi'
+  - 'php8.6-cli'
+  - 'php8.6-common'
+  - 'php8.6-fpm'
+
 php_default_modules:
   - bcmath
   - bz2
@@ -155,6 +162,7 @@ php82_default_modules: "{{ php_default_modules | difference(['json']) }}"
 php83_default_modules: "{{ php_default_modules | difference(['json']) }}"
 php84_default_modules: "{{ php_default_modules | difference(['json']) }}"
 php85_default_modules: "{{ php_default_modules | difference(['json', 'opcache']) }}"
+php86_default_modules: "{{ php_default_modules | difference(['json', 'opcache']) }}"
 
 # If you still need phpXY_all_modules, set following variable to true
 # and set needed phpXY_all_modules from role version 1.8.1.
@@ -275,5 +283,14 @@ php_versions:
     conflicting_modules:
       - [ 'apcu', 'yac' ]
       - [ 'imagick', 'gmagick' ]
+
+  php86:
+    version: "8.6"
+    conf_dir: "/etc/php/8.6/"
+    default_modules: "{{ php86_default_modules | difference(['xmlrpc']) }}"
+    all_modules: "{{ php86_all_modules_detected }}"
+    conflicting_modules: []
+#      - [ 'apcu', 'yac' ]
+#      - [ 'imagick', 'gmagick' ]
 
 php: []
