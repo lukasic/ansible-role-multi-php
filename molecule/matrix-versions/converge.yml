@@ -1,0 +1,126 @@
+---
+# Purpose: bring the instance to the desired state by running the role under test.
+# Molecule calls this playbook with `molecule converge`.
+- name: Converge
+  hosts: all
+  gather_facts: true
+  vars:
+    php_default_version: 8.5
+
+    common_fpm_ini:
+     - { "section": "PHP",     "key": "max_execution_time",             "value": "360"  }
+     - { "section": "PHP",     "key": "post_max_size",                  "value": "64MB" }
+     - { "section": "PHP",     "key": "upload_max_filesize",            "value": "64MB" }
+     - { "section": "opcache", "key": "opcache.enable",                 "value": "1"    }
+     - { "section": "opcache", "key": "opcache.memory_consumption",     "value": "512"  }
+     - { "section": "opcache", "key": "opcache.max_accelerated_files",  "value": "500"  }
+
+    php:
+     - version: php56
+       modules_extra: "{{ php_versions['php56'].all_modules | difference(['yac', 'gmagick', 'xcache']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "2048M"
+
+     - version: php70
+       modules_extra: "{{ php_versions['php70'].all_modules | difference(['yac', 'gmagick']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "1024M"
+
+     - version: php71
+       modules_extra: "{{ php_versions['php71'].all_modules | difference(['yac', 'gmagick']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "1024M"
+
+     - version: php72
+       modules_extra: "{{ php_versions['php72'].all_modules | difference(['yac', 'gmagick', 'sodium', 'phalcon4']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "1024M"
+
+     - version: php73
+       modules_extra: "{{ php_versions['php73'].all_modules | difference(['yac', 'gmagick', 'sodium', 'phalcon4']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "1024M"
+
+     - version: php74
+       modules_extra: "{{ php_versions['php74'].all_modules | difference(['yac', 'gmagick']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "1024M"
+
+     - version: php80
+       modules_extra: "{{ php_versions['php80'].all_modules | difference(['yac', 'gmagick']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "512M"
+
+     - version: php81
+       modules_extra: "{{ php_versions['php81'].all_modules | difference(['yac', 'gmagick']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "512M"
+
+     - version: php82
+       modules_extra: "{{ php_versions['php82'].all_modules | difference(['yac', 'gmagick']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "512M"
+
+     - version: php83
+       modules_extra: "{{ php_versions['php83'].all_modules | difference(['yac', 'gmagick']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "512M"
+
+     - version: php84
+       modules_extra: "{{ php_versions['php84'].all_modules | difference(['yac', 'gmagick']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "512M"
+
+     - version: php85
+       modules_extra: "{{ php_versions['php85'].all_modules | difference(['yac', 'gmagick']) }}"
+       fpm_ini: "{{ common_fpm_ini }}"
+       cli_ini:
+        - section: "PHP"
+          key: "memory_limit"
+          value: "512M"
+
+  tasks:
+    - name: Install packages
+      apt:
+        pkg:
+          - gpg
+          - apt-utils
+        update_cache: yes
+        state: present
+
+    - name: Apply role under test
+      ansible.builtin.include_role:
+        name: lukasic.php
