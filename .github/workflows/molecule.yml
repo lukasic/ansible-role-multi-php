@@ -1,0 +1,38 @@
+---
+
+name: Molecule
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Podman
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y podman
+
+      - name: Install Ansible + Molecule
+        run: |
+          python -m pip install --upgrade pip
+          pip install ansible-core "molecule" "molecule-plugins[podman]"
+          ansible-galaxy collection install containers.podman
+
+      - name: Run molecule scenario matrix-versions
+        run: molecule test -s matrix-versions
+        env:
+          ANSIBLE_FORCE_COLOR: "1"
+          PY_COLORS: "1"
+
