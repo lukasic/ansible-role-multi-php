@@ -22,7 +22,6 @@ jobs:
           - ubuntu24
           - debian12
           - ubuntu22
-          - debian11
     steps:
       - name: Checkout repository
         run: |
