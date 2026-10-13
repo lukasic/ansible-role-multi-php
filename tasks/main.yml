@@ -72,7 +72,7 @@
 - name: Install php versions
   apt:
     pkg: "{{ lookup('vars', item.version) | union(php_versions[item.version].default_modules | union(item.get('modules_extra', [])) | map('regex_replace', '^(.*)$', 'php' + php_versions[item.version].version + '-\\1') | list ) }}"
-    state: latest
+    state: "{{ php_apt_package_state }}"
     update_cache: true
   loop: "{{ php }}"
 

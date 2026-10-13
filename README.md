@@ -6,6 +6,11 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.10.0
+
+* feat: add `php_apt_package_state` to override apt behaviour
+* feat: add support for Ubuntu 26.04 Resolute
+
 1.9.1
 
 * fix: lazy resolving of dynamic modules
