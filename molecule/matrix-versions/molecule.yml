@@ -37,14 +37,6 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
 
-  - name: debian11
-    image: debian:bullseye-slim
-    command: "sleep infinity"
-    privileged: true
-    pre_build_image: false
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-
   - name: debian12
     image: debian:bookworm-slim
     command: "sleep infinity"
