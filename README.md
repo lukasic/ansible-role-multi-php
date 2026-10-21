@@ -6,6 +6,10 @@ Ansible role providing multiple PHP versions on Debian.
 Changelog
 ---------
 
+1.11.0
+
+* feat: switch Ubuntu repozitories from PPA to deb.sury.org
+
 1.10.0
 
 * feat: add `php_apt_package_state` to override apt behaviour

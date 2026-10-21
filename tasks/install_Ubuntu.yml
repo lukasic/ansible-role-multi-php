@@ -1,6 +1,19 @@
 ---
 
-- name: Add Ubuntu repository
+- name: Remove old Ubuntu PPA repository
   ansible.builtin.apt_repository:
     repo: 'ppa:ondrej/php'
     codename: "{{ ansible_distribution_release }}"
+    state: absent
+
+- name: Install debsuryorg-archive-keyring
+  apt:
+    deb: https://packages.sury.org/debsuryorg-archive-keyring.deb
+    state: present
+
+- name: Add packages.sury.org/php APT repository
+  apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ {{ ansible_distribution_release }} main
+    state: present
+    mode: 0644
+    filename: php.list
